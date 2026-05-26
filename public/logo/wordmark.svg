@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 120">
+  <text x="0" y="86" font-family="system-ui,sans-serif" font-weight="900" font-size="100" letter-spacing="-5" fill="#0E0E10">FC</text>
+  <text x="160" y="86" font-family="system-ui,sans-serif" font-weight="900" font-size="100" letter-spacing="-5" font-style="italic" fill="#5B2A86">Poto</text>
+  <circle cx="510" cy="78" r="9" fill="#E0531F"/>
+  <text x="0" y="110" font-family="system-ui,sans-serif" font-weight="500" font-size="11" letter-spacing="4" fill="#0E0E10" opacity="0.55">FOOTBALL CLUB DE TOULOUSE · DEPUIS 2014</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg-ch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5B2A86"/>
+      <stop offset="100%" stop-color="#0E0E10"/>
+    </linearGradient>
+    <pattern id="hatch-ch" patternUnits="userSpaceOnUse" width="24" height="24" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="24" stroke="#F2EDE4" stroke-width="2" stroke-opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg-ch)"/>
+  <rect width="1200" height="1500" fill="url(#hatch-ch)"/>
+  <circle cx="950" cy="350" r="240" fill="#E0531F" opacity="0.2"/>
+  <g font-family="system-ui,sans-serif" fill="#F2EDE4" text-anchor="middle">
+    <text x="600" y="720" font-size="22" letter-spacing="6" font-weight="500" opacity="0.7">PLACEHOLDER · CLUB-HOUSE</text>
+    <text x="600" y="790" font-size="60" font-weight="900" letter-spacing="-2">1200 × 1500</text>
+    <text x="600" y="840" font-size="16" letter-spacing="4" opacity="0.55">PORTRAIT 4:5 — VESTIAIRES / BUVETTE</text>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M6 6 H58 V40 C58 52 32 60 32 60 C32 60 6 52 6 40 Z" fill="#5B2A86" stroke="#0E0E10" stroke-width="3"/>
+  <path d="M14 14 H50" stroke="#F2EDE4" stroke-width="2"/>
+  <text x="32" y="38" font-family="system-ui,sans-serif" font-weight="900" font-size="20" letter-spacing="-1" fill="#F2EDE4" text-anchor="middle">FCP</text>
+  <circle cx="32" cy="49" r="3.5" fill="#E0531F"/>
+</svg>
