@@ -97,7 +97,7 @@ export const championship = {
   season: "2025 / 2026",
   totalTeams: 8,
   totalJournees: 14,
-  source: "https://fsgt31.fr/gestion-de-championnat/calendar/21-football-11-excellence-poule-a.html"
+  source: "https://fsgt31.fr/gestion-de-championnat/table/21-football-11-excellence-poule-a.html"
 };
 
 export type News = {

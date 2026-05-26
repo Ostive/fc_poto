@@ -6,7 +6,7 @@
  * est indisponible ou si son HTML change.
  *
  * Pour invalider manuellement : appeler `/api/revalidate-fsgt` avec le token,
- * ou utiliser `revalidateTag("fsgt")` côté serveur.
+ * ou utiliser `updateTag("fsgt")` côté serveur.
  */
 
 import { unstable_cache } from "next/cache";

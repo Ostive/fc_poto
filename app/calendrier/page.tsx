@@ -148,7 +148,7 @@ export default async function CalendrierPage() {
         <SectionLabel
           index="03"
           title="Résultats récents"
-          kicker={past.length > 0 ? `Saison ${championship.season}` : "Premiers résultats à venir"}
+          kicker={`Football à 11 · Excellence Poule A${past.length > 0 ? ` · saison ${championship.season}` : " · premiers résultats à venir"}`}
         />
         {past.length === 0 && (
           <p className="mt-10 text-ink/60 text-[15px] max-w-md">
