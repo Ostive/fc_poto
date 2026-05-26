@@ -54,7 +54,7 @@ export function LegalLayout({
           </aside>
 
           <div className="col-span-12 lg:col-span-9">
-            <div className="prose-fcpoto max-w-[68ch] grid gap-8 text-[16px] leading-[1.65] text-ink/85">
+            <div className="prose-fcpoto grid gap-8 text-[16px] leading-[1.65] text-ink/85">
               {children}
             </div>
           </div>

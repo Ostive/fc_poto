@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { news } from "@/lib/data";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Reveal } from "@/components/Reveal";
@@ -11,7 +12,7 @@ export const metadata = {
 export default function ActualitesPage() {
   const hasNews = news.length > 0;
   const [hero, ...rest] = news;
-  const categories = ["Tous", "Match", "Club", "Carnet", "Édito", "Coulisses"];
+  const categories = ["Tous", "Match", "Tournoi", "Club", "Carnet", "Édito", "Coulisses"];
 
   return (
     <>
@@ -63,12 +64,26 @@ export default function ActualitesPage() {
             <Reveal>
               <Link href={`/actualites/${hero.slug}`} className="block group">
                 <article className="grid grid-cols-12 gap-6 lg:gap-10">
-                  <div className="col-span-12 lg:col-span-6 relative overflow-hidden rounded-[24px] aspect-[5/4] bg-navy text-cream flex items-end p-8">
-                    <div className="absolute inset-0 hatch opacity-25" />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-navy-deep via-navy to-ocre/60 mix-blend-multiply" />
-                    <span className="relative font-display italic text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tighter2 opacity-90 max-w-full break-words">
-                      {hero.title.split(/[:.]/, 1)[0].trim()}
-                    </span>
+                  <div className="col-span-12 lg:col-span-6 relative overflow-hidden rounded-[24px] aspect-[5/4] bg-navy text-cream">
+                    {hero.cover ? (
+                      <Image
+                        src={hero.cover}
+                        alt={hero.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                      />
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 hatch opacity-25" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-navy-deep via-navy to-ocre/60 mix-blend-multiply" />
+                        <div className="absolute inset-0 flex items-end p-8">
+                          <span className="font-display italic text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tighter2 opacity-90 max-w-full break-words">
+                            {hero.title.split(/[:.]/, 1)[0].trim()}
+                          </span>
+                        </div>
+                      </>
+                    )}
                   </div>
                   <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
                     <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.2em] uppercase text-ink/55">

@@ -16,7 +16,7 @@ type TabProps = {
 };
 
 /**
- * Composant marqueur — ne rend rien directement.
+ * Composant marqueur - ne rend rien directement.
  * `Tabs` lit ses props (id, label, kicker, children) pour construire les onglets.
  */
 export function Tab(_props: TabProps): ReactElement | null {

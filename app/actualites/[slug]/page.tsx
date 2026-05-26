@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { news } from "@/lib/data";
 import { Reveal } from "@/components/Reveal";
@@ -71,13 +72,26 @@ export default async function ArticlePage({
 
         {/* HERO VISUAL */}
         <div className="mt-12 lg:mt-16 relative overflow-hidden rounded-[24px] aspect-[16/9] bg-navy text-cream">
-          <div className="absolute inset-0 hatch opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-navy-deep via-navy to-ocre/60 mix-blend-multiply" />
-          <div className="absolute inset-0 flex items-center justify-center p-10">
-            <span className="font-display italic text-[clamp(4rem,12vw,11rem)] leading-[0.85] tracking-tighter2 opacity-90 text-center">
-              {article.title.split(/[:.]/, 1)[0].trim()}
-            </span>
-          </div>
+          {article.cover ? (
+            <Image
+              src={article.cover}
+              alt={article.title}
+              fill
+              priority
+              sizes="(max-width: 1480px) 100vw, 1480px"
+              className="object-cover"
+            />
+          ) : (
+            <>
+              <div className="absolute inset-0 hatch opacity-25" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-navy-deep via-navy to-ocre/60 mix-blend-multiply" />
+              <div className="absolute inset-0 flex items-center justify-center p-10">
+                <span className="font-display italic text-[clamp(4rem,12vw,11rem)] leading-[0.85] tracking-tighter2 opacity-90 text-center">
+                  {article.title.split(/[:.]/, 1)[0].trim()}
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </article>
 
@@ -125,7 +139,7 @@ export default async function ArticlePage({
 
           <div className="col-span-12 lg:col-span-9 lg:col-start-4 order-1 lg:order-2 -mt-4 lg:mt-0">
             <Reveal>
-              <div className="max-w-[68ch] grid gap-6">
+              <div className="grid gap-6">
                 {article.body.map((p, i) => (
                   <p
                     key={i}
@@ -158,6 +172,48 @@ export default async function ArticlePage({
           </div>
         </div>
       </section>
+
+      {/* PHOTO ESSAY */}
+      {article.gallery && article.gallery.length > 0 && (
+        <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-24">
+          <div className="flex items-end justify-between gap-6 border-b border-ink/20 pb-6">
+            <div className="flex items-baseline gap-6">
+              <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-ink/50">
+                ↳ Photos
+              </span>
+              <h2 className="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.02] tracking-tighter2">
+                La journée en images
+              </h2>
+            </div>
+            <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-ink/55 hidden md:block">
+              {article.gallery.length} clichés
+            </span>
+          </div>
+
+          <div className="mt-10 columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+            {article.gallery.map((photo, i) => (
+              <Reveal key={photo.src} delay={(i % 4) * 0.05} className="mb-6 break-inside-avoid">
+                <figure className="relative rounded-[18px] overflow-hidden bg-paper">
+                  <div className="relative w-full" style={{ aspectRatio: i % 3 === 1 ? "4/5" : i % 3 === 2 ? "5/4" : "1/1" }}>
+                    <Image
+                      src={photo.src}
+                      alt={photo.caption || `Tournoi · photo ${i + 1}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  {photo.caption && (
+                    <figcaption className="absolute bottom-3 left-3 right-3 font-mono text-[10px] tracking-[0.22em] uppercase text-cream bg-ink/55 backdrop-blur-sm rounded-full px-3 py-1.5 w-fit">
+                      {photo.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* RELATED */}
       <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-24 mb-24">

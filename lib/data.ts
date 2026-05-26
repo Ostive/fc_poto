@@ -104,16 +104,91 @@ export type News = {
   slug: string;
   title: string;
   date: string;
-  category: "Match" | "Club" | "Carnet" | "Édito" | "Coulisses";
+  category: "Match" | "Club" | "Carnet" | "Édito" | "Coulisses" | "Tournoi";
   excerpt: string;
   read: string;
   author: string;
   body: string[];
+  cover?: string;
+  gallery?: { src: string; caption?: string }[];
 };
 
-// Articles à venir, écrits par le club. Aucune donnée inventée · rester vide tant
-// qu'aucun article réel n'est rédigé. La page /actualites affichera un état "à venir".
-export const news: News[] = [];
+// Séries thématiques · sujets continus alimentés au fil du temps
+// (par opposition aux Albums, qui sont des événements one-off et vivent dans `news`).
+export type Series = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  cover: string;
+  photos: { src: string; caption?: string }[];
+};
+
+export const series: Series[] = [
+  {
+    slug: "equipes-fsgt",
+    title: "Les équipes de notre communauté FSGT",
+    subtitle: "Communauté",
+    description:
+      "Les équipes que l'on croise chaque saison au sein du FSGT 31 · adversaires, partenaires, copains de championnat. Sans elles, pas de match · sans match, pas de club. Une série hommage à celles et ceux qui font vivre le foot amateur en Haute-Garonne.",
+    cover: "/gallery/equipes-fsgt/01.webp",
+    photos: Array.from({ length: 28 }, (_, i) => ({
+      src: `/gallery/equipes-fsgt/${String(i + 1).padStart(2, "0")}.webp`,
+      caption: undefined
+    }))
+  },
+  {
+    slug: "cote-soins",
+    title: "Côté soins",
+    subtitle: "Vie du club",
+    description:
+      "Aides-soignants, masseurs, soigneurs · celles et ceux qui prennent soin des corps quand le terrain a fini de jouer. Une série alimentée au fil des saisons.",
+    cover: "/gallery/cote-soins/01.webp",
+    photos: [
+      { src: "/gallery/cote-soins/01.webp" },
+      { src: "/gallery/cote-soins/02.webp" },
+      { src: "/gallery/cote-soins/03.webp" },
+      { src: "/gallery/cote-soins/04.webp" }
+    ]
+  }
+];
+
+export const news: News[] = [
+  {
+    slug: "tournoi-walking-foot-2025-04-19",
+    title: "Photos du tournoi walking foot",
+    date: "2025-04-19",
+    category: "Tournoi",
+    excerpt:
+      "Un samedi de printemps à Lardenne. 5 contre 5, interdiction de courir, et beaucoup de buts. Récit en images d'un tournoi de walking foot organisé par le club.",
+    read: "4 min",
+    author: "La rédaction du club",
+    cover: "/gallery/tournoi-walking-foot-2025-04-19/coupe-fcpoto.jpg",
+    body: [
+      "Samedi 19 avril 2025. Le stade de Lardenne s'éveille sous un ciel printanier. Le FC POTO ouvre ses portes au walking foot, cette pratique née d'une idée simple : continuer à jouer au foot, même quand les genoux protestent.",
+      "Dès le matin, les équipes affluent. Joueurs en maillots colorés, encadrants, public, bénévoles à la buvette : la journée s'annonce dense. Le format, petits matchs sur petit terrain en 5 contre 5, permet d'enchaîner les rencontres rapidement.",
+      "Une règle, une seule, vraiment difficile : **ne pas courir**. Toujours un pied au sol. Pour qui n'a jamais essayé, c'est plus exigeant qu'il n'y paraît. Il faut désapprendre l'instinct, ralentir le geste, anticiper plus que sprinter. Les meilleurs joueurs sont rarement les plus rapides : ce sont les plus malins.",
+      "Au fil de la journée, les équipes se découvrent, se mesurent, s'amusent. Les buts s'accumulent. Il y en a beaucoup, dans cette discipline qui n'a ni hors-jeu ni contact. Les commentaires fusent depuis la touche, parfois plus fournis que les actions elles-mêmes.",
+      "Vient enfin la phase finale, plus tendue, plus silencieuse. Petits ajustements tactiques, regards croisés entre coéquipiers. Sur le terrain, on sent que chacun a envie de bien faire, pas pour gagner à tout prix, mais parce que le moment compte.",
+      "Et puis la remise des prix : poignées de main, sourires, photo de groupe autour du trophée. La journée se termine comme elle a commencé, autour de la buvette. Quelques anecdotes échangées, des rendez-vous pris pour la prochaine fois. Voilà ce que le walking foot fait de mieux : **rassembler**."
+    ],
+    gallery: [
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/01.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/02.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/03.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/04.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/05.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/06.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/07.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/08.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/09.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/10.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/11.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/12.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/13.webp" }
+    ]
+  }
+];
 
 export const stats = [
   { label: "Tournois organisés", value: "7" },
@@ -145,6 +220,7 @@ export type Practice = {
   title: string;
   subtitle: string;
   icon: "trophy" | "users" | "heart";
+  image: string;
   description: string;
   ctaLabel: string;
   ctaHref: string;
@@ -157,6 +233,7 @@ export const practices: Practice[] = [
     title: "Foot à 11",
     subtitle: "Excellence · Poule A",
     icon: "trophy",
+    image: "/practices/foot-11.png",
     description:
       "Du jeu, des valeurs, du sérieux sur le terrain et le sourire en dehors.",
     ctaLabel: "Voir le classement",
@@ -169,6 +246,7 @@ export const practices: Practice[] = [
     title: "Foot à 7 · Équipe A",
     subtitle: "Poule 3",
     icon: "users",
+    image: "/practices/foot-7.png",
     description:
       "Petite taille, grandes actions. L'intensité du foot à 7 avec l'esprit POTO.",
     ctaLabel: "Voir le calendrier",
@@ -181,6 +259,7 @@ export const practices: Practice[] = [
     title: "Foot à 7 · Équipe B",
     subtitle: "Poule 7",
     icon: "users",
+    image: "/practices/foot-7.png",
     description:
       "Même envie, autre poule. La progression et le plaisir avant tout.",
     ctaLabel: "Voir le calendrier",
@@ -193,8 +272,9 @@ export const practices: Practice[] = [
     title: "Walking Foot",
     subtitle: "Mixte 45+",
     icon: "heart",
+    image: "/practices/walking-foot.png",
     description:
-      "On marche, on combine, on transpire… et on rigole beaucoup ! Sport inclusif et convivial.",
+      "On marche, on combine, on transpire et on rigole beaucoup. Sport inclusif et convivial.",
     ctaLabel: "Découvrir les règles",
     ctaHref: "https://fsgt31.fr/les-commissions/135-walking-foot.html"
   }

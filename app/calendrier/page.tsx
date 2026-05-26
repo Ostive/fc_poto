@@ -55,7 +55,7 @@ export default async function CalendrierPage() {
         </div>
       </section>
 
-      {/* TABS — Foot 11 / Foot 7 */}
+      {/* TABS - Foot 11 / Foot 7 */}
       <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-16 mb-24">
         <Tabs defaultId="foot11">
           {/* ───────────── FOOT À 11 ───────────── */}
