@@ -43,7 +43,7 @@ export default function ClubPage() {
           </div>
           <div className="col-span-12 lg:col-span-10">
             <h1 className="font-display leading-[0.88] tracking-tighter2 text-[clamp(3rem,9vw,9rem)]">
-              Le club <span className="italic text-navy">en six</span><br /> chapitres.
+              Le club <span className="italic text-navy">en trois</span><br /> chapitres.
             </h1>
             <p className="mt-10 max-w-2xl text-[18px] leading-relaxed">
               Toute l'histoire du FC Poto, racontée comme on la raconte au comptoir
