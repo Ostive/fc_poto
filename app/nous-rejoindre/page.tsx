@@ -64,7 +64,7 @@ export default function ContactPage() {
 
       {/* PROFILES */}
       <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-16">
-        <SectionLabel index="01" title="Comment vous rejoignez ?" kicker="Choisir un profil change le formulaire" />
+        <SectionLabel index="01" title="Comment nous rejoindre ?" kicker="Choisir un profil change le formulaire" />
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/15">
           {profiles.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.05}>
@@ -269,14 +269,6 @@ export default function ContactPage() {
             {
               q: "À quoi ressemble un essai ?",
               a: "Vous venez le mardi à 19h, en tenue, avec une bouteille d'eau. L'entraîneur fait sa séance habituelle, et on vous oriente vers le groupe qui vous correspond. Aucun engagement avant la troisième séance."
-            },
-            {
-              q: "Quel est le tarif d'une licence ?",
-              a: "165 € la saison pour les séniors, 130 € pour les vétérans, 75 € pour les bénévoles non-joueurs. La licence inclut la cotisation FFF, l'assurance, et un maillot d'entraînement."
-            },
-            {
-              q: "Et si je n'ai jamais joué en club ?",
-              a: "C'est la même porte. La moitié de nos licenciés a découvert le foot en club au FC Poto. On a une équipe loisir adaptée."
             }
           ].map((f, i) => (
             <Reveal key={i} delay={i * 0.06}>
