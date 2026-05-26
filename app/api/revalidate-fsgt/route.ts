@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
@@ -9,6 +9,9 @@ import { NextResponse, type NextRequest } from "next/server";
  *
  * Configurer la variable d'env `FSGT_REVALIDATE_TOKEN` (gitignored).
  * À déclencher après chaque journée par un webhook, un cron Vercel, ou à la main.
+ *
+ * Next.js 16 : on utilise `updateTag(tag)` (signature à un argument) plutôt
+ * que `revalidateTag(tag, profile)` qui exige un profil de cache explicite.
  */
 
 const TAGS = ["fsgt", "fsgt-foot7"] as const;
@@ -29,7 +32,7 @@ export async function GET(req: NextRequest) {
   if (!auth.ok) {
     return NextResponse.json({ revalidated: false, error: auth.reason }, { status: 401 });
   }
-  for (const tag of TAGS) revalidateTag(tag);
+  for (const tag of TAGS) updateTag(tag);
   return NextResponse.json({
     revalidated: true,
     tags: TAGS,
