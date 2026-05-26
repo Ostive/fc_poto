@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { championship, club, disciplines, featuredEvent, news, practices, stats, values } from "@/lib/data";
 import { getChampionshipData } from "@/lib/fsgt";
@@ -65,6 +66,7 @@ export default async function HomePage() {
                     <li><a href="#resultats" className="link-underline">04 · Derniers résultats</a></li>
                     <li><a href="#chiffres" className="link-underline">05 · Le club en chiffres</a></li>
                     <li><a href="#actu" className="link-underline">06 · Actualités</a></li>
+                    <li><a href="#galerie" className="link-underline">07 · En image</a></li>
                   </ol>
                 </div>
               </div>
@@ -283,18 +285,22 @@ export default async function HomePage() {
           {practices.map((p, i) => (
             <Reveal key={p.id} delay={(i % 4) * 0.06}>
               <article className="group h-full bg-cream p-7 flex flex-col gap-5 hover:bg-paper transition-colors">
-                <div className="flex items-start gap-4">
-                  <span className="shrink-0 w-12 h-12 rounded-lg bg-navy-deep text-cream flex items-center justify-center group-hover:bg-navy-electric transition-colors">
-                    <PracticeIcon name={p.icon} />
-                  </span>
-                  <div>
-                    <h3 className="font-display text-[clamp(1.25rem,2vw,1.5rem)] tracking-tighter2 leading-[1.15] text-navy-deep">
-                      {p.title}
-                    </h3>
-                    <p className="mt-1 font-mono text-[10px] tracking-[0.18em] uppercase text-ink/55">
-                      {p.subtitle}
-                    </p>
-                  </div>
+                <div className="relative aspect-[5/4] -mx-2 -mt-2 rounded-xl overflow-hidden bg-paper/70 flex items-center justify-center">
+                  <Image
+                    src={p.image}
+                    alt={`Illustration ${p.title}`}
+                    width={240}
+                    height={240}
+                    className="object-contain w-2/3 h-2/3 group-hover:scale-[1.04] transition-transform duration-500"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-display text-[clamp(1.25rem,2vw,1.5rem)] tracking-tighter2 leading-[1.15] text-navy-deep">
+                    {p.title}
+                  </h3>
+                  <p className="mt-1 font-mono text-[10px] tracking-[0.18em] uppercase text-ink/55">
+                    {p.subtitle}
+                  </p>
                 </div>
                 <p className="text-[14px] leading-relaxed text-ink/75 flex-1">
                   {p.description}
@@ -486,25 +492,38 @@ export default async function HomePage() {
             >
               <Link href={`/actualites/${n.slug}`} className="group block h-full">
                 <article
-                  className={`h-full flex flex-col p-6 lg:p-7 rounded-[24px] border border-ink/15 transition-all hover:-translate-y-1 hover:border-ink ${
+                  className={`h-full flex flex-col overflow-hidden rounded-[24px] border border-ink/15 transition-all hover:-translate-y-1 hover:border-ink ${
                     i === 0 ? "bg-paper" : "bg-cream"
                   }`}
                 >
-                  <div className="flex items-center justify-between font-mono text-[10px] tracking-[0.22em] uppercase text-ink/60">
-                    <span className="bg-ink text-cream px-2.5 py-1 rounded-full">{n.category}</span>
-                    <span>{formatDateShort(n.date)}</span>
+                  {n.cover && (
+                    <div className={`relative ${i === 0 ? "aspect-[16/9]" : "aspect-[5/4]"} overflow-hidden`}>
+                      <Image
+                        src={n.cover}
+                        alt={n.title}
+                        fill
+                        sizes={i === 0 ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 100vw, 25vw"}
+                        className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6 lg:p-7 flex flex-col flex-1">
+                    <div className="flex items-center justify-between font-mono text-[10px] tracking-[0.22em] uppercase text-ink/60">
+                      <span className="bg-ink text-cream px-2.5 py-1 rounded-full">{n.category}</span>
+                      <span>{formatDateShort(n.date)}</span>
+                    </div>
+                    <h3 className={`mt-6 font-display tracking-tighter2 leading-[1.05] ${
+                      i === 0 ? "text-[clamp(1.75rem,3vw,2.75rem)]" : "text-[clamp(1.25rem,2.4vw,1.625rem)]"
+                    }`}>
+                      {n.title}
+                    </h3>
+                    <p className={`mt-4 text-ink/70 text-[14px] leading-relaxed flex-1 ${i !== 0 ? "line-clamp-3" : ""}`}>
+                      {n.excerpt}
+                    </p>
+                    <p className="mt-6 font-mono text-[10px] tracking-[0.22em] uppercase text-ink/50">
+                      {n.author} · {n.read}
+                    </p>
                   </div>
-                  <h3 className={`mt-6 font-display tracking-tighter2 leading-[1.05] ${
-                    i === 0 ? "text-[clamp(1.75rem,3vw,2.75rem)]" : "text-[clamp(1.25rem,2.4vw,1.625rem)]"
-                  }`}>
-                    {n.title}
-                  </h3>
-                  <p className={`mt-4 text-ink/70 text-[14px] leading-relaxed flex-1 ${i !== 0 ? "line-clamp-3" : ""}`}>
-                    {n.excerpt}
-                  </p>
-                  <p className="mt-6 font-mono text-[10px] tracking-[0.22em] uppercase text-ink/50">
-                    {n.author} · {n.read}
-                  </p>
                 </article>
               </Link>
             </Reveal>
@@ -517,6 +536,106 @@ export default async function HomePage() {
         </div>
       </section>
       )}
+
+      {/* GALERIE · APERÇU */}
+      <section id="galerie" className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-32">
+        <SectionLabel
+          index="07"
+          title="En image"
+          kicker="Aperçu de la galerie · matchs, soins, communauté"
+        />
+        <div className="mt-10 grid grid-cols-12 gap-4 lg:gap-6">
+          {/* Row 1 · une grande + deux empilées */}
+          <Reveal className="col-span-12 md:col-span-7">
+            <Link href="/actualites/tournoi-walking-foot-2025-04-19" className="group block">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                <Image
+                  src="/gallery/tournoi-walking-foot-2025-04-19/coupe-fcpoto.jpg"
+                  alt="Trophée du tournoi"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </Link>
+          </Reveal>
+          <div className="col-span-12 md:col-span-5 grid gap-4 lg:gap-6">
+            <Reveal delay={0.05}>
+              <Link href="/galerie/equipes-fsgt" className="group block">
+                <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                  <Image
+                    src="/gallery/equipes-fsgt/05.webp"
+                    alt="Une équipe de la communauté FSGT"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Link href="/galerie/cote-soins" className="group block">
+                <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                  <Image
+                    src="/gallery/cote-soins/02.webp"
+                    alt="Côté soins · vie du club"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                </div>
+              </Link>
+            </Reveal>
+          </div>
+
+          {/* Row 2 · trois identiques */}
+          <Reveal delay={0.15} className="col-span-6 md:col-span-4">
+            <Link href="/actualites/tournoi-walking-foot-2025-04-19" className="group block">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                <Image
+                  src="/gallery/tournoi-walking-foot-2025-04-19/06.webp"
+                  alt="Au cœur de l'action"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </Link>
+          </Reveal>
+          <Reveal delay={0.2} className="col-span-6 md:col-span-4">
+            <Link href="/galerie/equipes-fsgt" className="group block">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                <Image
+                  src="/gallery/equipes-fsgt/18.webp"
+                  alt="Une équipe FSGT 31"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </Link>
+          </Reveal>
+          <Reveal delay={0.25} className="col-span-12 md:col-span-4">
+            <Link href="/actualites/tournoi-walking-foot-2025-04-19" className="group block">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                <Image
+                  src="/gallery/tournoi-walking-foot-2025-04-19/11.webp"
+                  alt="Dernier souffle de la journée"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </Link>
+          </Reveal>
+        </div>
+
+        <div className="mt-8 flex justify-end">
+          <Link href="/galerie" className="font-mono text-[11px] tracking-[0.2em] uppercase link-underline">
+            Toute la galerie →
+          </Link>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="mt-32 mb-24 mx-auto max-w-[1480px] px-6 lg:px-10">
@@ -532,7 +651,7 @@ export default async function HomePage() {
                 jouer ici aussi.
               </h2>
               <p className="mt-6 max-w-xl text-[16px] text-ink/75 leading-relaxed">
-                Recrutement ouvert toute l'année. U17, séniors, vétérans,
+                Recrutement ouvert toute l'année. Séniors, vétérans, mixte 45+,
                 gardiens, arbitres bénévoles, parents qui aiment la buvette du
                 samedi.
               </p>

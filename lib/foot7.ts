@@ -1,5 +1,5 @@
 /**
- * lib/foot7.ts — Scraper Google Sheets pour le calendrier foot à 7 FSGT 31.
+ * lib/foot7.ts - Scraper Google Sheets pour le calendrier foot à 7 FSGT 31.
  *
  * La FSGT ne publie pas de page HTML pour le foot à 7 : seulement deux Google
  * Sheets (un par poule). On exporte chaque doc en CSV via l'URL `/export?format=csv`,

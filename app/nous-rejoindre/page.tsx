@@ -12,7 +12,7 @@ const profiles: { id: Profile; title: string; body: string; chip: string }[] = [
     id: "joueur",
     chip: "01",
     title: "Joueur ou joueuse",
-    body: "Tous niveaux. Une séance d'essai au mardi soir, sans engagement. Catégories séniors et vétérans · section féminine en construction."
+    body: "Tous niveaux. Une séance d'essai le mardi soir, sans engagement. Catégories séniors, vétérans et walking foot mixte 45+."
   },
   {
     id: "benevole",
@@ -24,13 +24,13 @@ const profiles: { id: Profile; title: string; body: string; chip: string }[] = [
     id: "sponsor",
     chip: "03",
     title: "Sponsor / Partenaire",
-    body: "Trois formules d'engagement annuel. Le club propose une vraie contrepartie : visibilité maillot, tribune, événements, contenus."
+    body: "Quatre formules d'engagement annuel. Le club propose une vraie contrepartie : visibilité maillot, tribune, événements, contenus."
   },
   {
     id: "autre",
     chip: "04",
     title: "Autre",
-    body: "Un projet ? Un stage ? Un événement à co-organiser ? Écrivez, on lit tout."
+    body: "Un projet ? Un stage ? Un événement à co-organiser ? Écris, on lit tout."
   }
 ];
 
@@ -49,7 +49,7 @@ export default function ContactPage() {
           </div>
           <div className="col-span-12 lg:col-span-10">
             <h1 className="font-display leading-[0.88] tracking-tighter2 text-[clamp(3rem,9vw,9rem)]">
-              On vous <span className="italic text-navy">attend</span>.<br />
+              On t'<span className="italic text-navy">attend</span>.<br />
               Vraiment.
             </h1>
             <p className="mt-10 max-w-2xl text-[18px] leading-relaxed">
@@ -170,7 +170,7 @@ export default function ContactPage() {
 
               {profile === "benevole" && (
                 <Field
-                  label="Sur quel volet souhaitez-vous aider ?"
+                  label="Sur quel volet souhaites-tu aider ?"
                   name="role"
                   placeholder="Buvette, photo, communication, arbitrage…"
                 />
@@ -185,14 +185,14 @@ export default function ContactPage() {
 
               <div>
                 <label className="font-mono text-[10px] tracking-[0.22em] uppercase text-ink/55 block">
-                  Votre message
+                  Ton message
                 </label>
                 <textarea
                   name="message"
                   rows={5}
                   required
                   className="mt-2 w-full bg-cream/70 border border-ink/15 rounded-2xl p-4 focus:outline-none focus:border-ink resize-none"
-                  placeholder="Racontez-nous en quelques mots. Pas besoin d'être formel · on n'est pas l'administration."
+                  placeholder="Raconte-nous en quelques mots. Pas besoin d'être formel · on n'est pas l'administration."
                 />
               </div>
 
@@ -214,7 +214,7 @@ export default function ContactPage() {
                     sent ? "text-moss opacity-100" : "opacity-0"
                   }`}
                 >
-                  ✓ ouverture de votre messagerie…
+                  ✓ ouverture de ta messagerie…
                 </span>
               </div>
             </form>
@@ -268,7 +268,7 @@ export default function ContactPage() {
           {[
             {
               q: "À quoi ressemble un essai ?",
-              a: "Vous venez le mardi à 19h, en tenue, avec une bouteille d'eau. L'entraîneur fait sa séance habituelle, et on vous oriente vers le groupe qui vous correspond. Aucun engagement avant la troisième séance."
+              a: "Tu viens le mardi à 19h, en tenue, avec une bouteille d'eau. L'entraîneur fait sa séance habituelle, et on t'oriente vers le groupe qui te correspond. Aucun engagement avant la troisième séance."
             }
           ].map((f, i) => (
             <Reveal key={i} delay={i * 0.06}>

@@ -1,5 +1,5 @@
 /**
- * lib/fsgt.ts — Scraper server-side FSGT 31 (Excellence Poule A).
+ * lib/fsgt.ts - Scraper server-side FSGT 31 (Excellence Poule A).
  *
  * Appelé depuis les pages serveur via `getChampionshipData()`. Cache Next.js (1 h)
  * + fallback automatique sur les données statiques de `lib/data.ts` si la FSGT
@@ -194,7 +194,7 @@ function computeStandings(matches: ScrapedMatch[]): Standing[] {
 /* ------------------------------- top-level ------------------------------- */
 
 async function scrape(): Promise<ChampionshipSnapshot> {
-  // 1. Page 1 d'abord — elle contient les matchs ET le bloc pagination
+  // 1. Page 1 d'abord - elle contient les matchs ET le bloc pagination
   const firstHtml = await fetchCalendarPage(1);
   const all: ScrapedMatch[] = parseHtml(firstHtml);
 
@@ -239,7 +239,7 @@ async function scrape(): Promise<ChampionshipSnapshot> {
 }
 
 /**
- * Cached scrape — Next.js Data Cache, revalidate toutes les heures.
+ * Cached scrape - Next.js Data Cache, revalidate toutes les heures.
  * Fallback automatique sur les données statiques de `lib/data.ts` en cas d'échec.
  */
 export const getChampionshipData = unstable_cache(

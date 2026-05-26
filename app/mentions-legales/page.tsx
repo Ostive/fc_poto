@@ -1,74 +1,193 @@
-import { LegalLayout, LegalSection, ToFill } from "@/components/LegalLayout";
+import { LegalLayout, LegalSection } from "@/components/LegalLayout";
 
 export const metadata = {
   title: "Mentions légales · FC Poto",
-  description: "Informations légales du site fcpoto.com et de l'association FC Poto."
+  description:
+    "Mentions légales du site fcpoto.com · édité par PROPULSION IA, SASU basée à Campsas (Tarn-et-Garonne)."
 };
 
 export default function MentionsLegalesPage() {
   return (
-    <LegalLayout index="01" title="Mentions légales" updated="21 mai 2026">
-      <LegalSection title="Éditeur du site">
+    <LegalLayout index="01" title="Mentions légales" updated="avril 2026">
+      <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-ink/55">
+        Conformité et transparence légale
+      </p>
+      <p>
+        Conformément aux articles 6-III et 19 de la loi n°2004-575 du 21 juin
+        2004 pour la Confiance dans l'Économie Numérique (LCEN).
+      </p>
+
+      <LegalSection title="1. Éditeur du site">
         <p>
-          Le site <strong>fcpoto.com</strong> est édité par l'association
-          <strong> FC Poto</strong>, association loi 1901 déclarée à la
-          Préfecture de la Haute-Garonne sous le numéro <ToFill /> et enregistrée
-          à la Fédération Française de Football sous le numéro <ToFill />.
+          <strong>Dénomination sociale :</strong> PROPULSION IA<br />
+          <strong>Forme juridique :</strong> SASU
         </p>
         <p>
-          Siège social : Stade de Lardenne, 153 avenue de Lardenne, 31000
-          Toulouse.
+          <strong>Siège social :</strong><br />
+          13 impasse Le Domaine de Margaux<br />
+          82370 Campsas · France
         </p>
         <p>
-          Présidente, directrice de la publication : <ToFill />.<br />
-          E-mail :{" "}
-          <a className="link-underline break-all" href="mailto:footballclub.poto@gmail.com">
-            footballclub.poto@gmail.com
+          <strong>SIREN :</strong> 950 908 558<br />
+          <strong>SIRET :</strong> 950 908 558 00014<br />
+          <strong>RCS :</strong> Montauban
+        </p>
+        <p>
+          <strong>Adresse e-mail :</strong>{" "}
+          <a
+            className="link-underline break-all"
+            href="mailto:contact@propulsion-ia.services"
+          >
+            contact@propulsion-ia.services
           </a>
         </p>
-      </LegalSection>
-
-      <LegalSection title="Hébergement">
         <p>
-          Le site est hébergé par <ToFill /> (à compléter : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA · ou OVHCloud, Roubaix, France · selon votre choix).
+          <strong>Directeur de la publication :</strong> Le Président de
+          PROPULSION IA
+        </p>
+        <p>
+          <strong>Lien capitalistique :</strong> PROPULSION IA est une filiale
+          de la société PROPULSION DIGITALE.
         </p>
       </LegalSection>
 
-      <LegalSection title="Propriété intellectuelle">
+      <LegalSection title="2. Hébergement">
+        <p>Le site est hébergé en Europe par la société :</p>
         <p>
-          L'ensemble des éléments graphiques, textes, photographies et vidéos
-          présents sur ce site sont la propriété exclusive du FC Poto, sauf
-          mention contraire. Toute reproduction, même partielle, est soumise à
-          l'autorisation écrite préalable de l'association.
-        </p>
-        <p>
-          Les marques et logos des partenaires affichés sur le site restent la
-          propriété de leurs détenteurs respectifs et sont reproduits avec leur
-          accord.
+          <strong>Hostinger International Ltd.</strong><br />
+          Numéro d'entreprise : HE 301365<br />
+          Adresse : 61 Lordou Vironos Street Lumiel Building, 4th floor, 6023
+          Larnaca, Chypre
         </p>
       </LegalSection>
 
-      <LegalSection title="Crédits">
+      <LegalSection title="3. Accès au site">
         <p>
-          Conception et développement : <ToFill /> · Design éditorial et
-          direction artistique en interne · Typographies : Archivo (Google Fonts)
-          et JetBrains Mono.
+          Le site est accessible 24h/24 et 7j/7, sauf interruption pour
+          maintenance, mise à jour ou en cas de force majeure.
+        </p>
+        <p>
+          PROPULSION IA ne saurait être tenue responsable des interruptions
+          temporaires du service.
         </p>
       </LegalSection>
 
-      <LegalSection title="Responsabilité">
+      <LegalSection title="4. Propriété intellectuelle">
         <p>
-          Le FC Poto met à jour ce site régulièrement mais ne peut garantir
-          l'exactitude, l'exhaustivité ou l'actualité des informations diffusées.
-          La responsabilité de l'association ne saurait être engagée en cas
-          d'erreur, d'omission ou d'indisponibilité du site.
+          L'ensemble des contenus présents sur le site (textes, images, logos,
+          marques, graphismes, vidéos, icônes, structure, code) est protégé par
+          le droit de la propriété intellectuelle.
+        </p>
+        <p>
+          Toute reproduction, représentation, diffusion ou exploitation, totale
+          ou partielle, sans autorisation écrite préalable de PROPULSION IA est
+          strictement interdite.
         </p>
       </LegalSection>
 
-      <LegalSection title="Droit applicable">
+      <LegalSection title="5. Responsabilité">
         <p>
-          Les présentes mentions légales sont régies par le droit français. En
-          cas de litige, les tribunaux français seront seuls compétents.
+          PROPULSION IA s'efforce de fournir des informations exactes et à
+          jour.
+        </p>
+        <p>
+          Toutefois, aucune garantie n'est donnée quant à l'exactitude,
+          l'exhaustivité ou l'actualité des informations diffusées.
+        </p>
+        <p>
+          L'utilisation du site se fait sous la seule responsabilité de
+          l'utilisateur.
+        </p>
+        <p>
+          PROPULSION IA ne pourra être tenue responsable de dommages directs ou
+          indirects résultant de l'utilisation du site.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="6. Liens hypertextes">
+        <p>Le site peut contenir des liens vers des sites tiers.</p>
+        <p>
+          PROPULSION IA n'exerce aucun contrôle sur ces sites et décline toute
+          responsabilité quant à leur contenu ou leur disponibilité.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="7. Données personnelles · RGPD">
+        <p>
+          Les données personnelles collectées via le site (formulaire de
+          contact, échanges commerciaux) sont traitées par PROPULSION IA aux
+          fins suivantes :
+        </p>
+        <ul className="grid gap-2 list-disc pl-6">
+          <li>Gestion des demandes de contact</li>
+          <li>Relation commerciale</li>
+          <li>Fourniture des prestations proposées</li>
+        </ul>
+        <p>
+          <strong>Base légale du traitement :</strong> intérêt légitime et
+          exécution de mesures précontractuelles.
+        </p>
+        <p><strong>Durée de conservation :</strong></p>
+        <ul className="grid gap-2 list-disc pl-6">
+          <li>Données de contact : 3 ans après le dernier échange</li>
+          <li>Données contractuelles : durée légale de conservation applicable</li>
+        </ul>
+        <p>Les données ne sont ni vendues ni cédées à des tiers non autorisés.</p>
+        <p>
+          Conformément au Règlement (UE) 2016/679 (RGPD), toute personne
+          dispose des droits suivants : accès, rectification, effacement,
+          limitation, opposition, portabilité.
+        </p>
+        <p>
+          Ces droits peuvent être exercés à l'adresse suivante :{" "}
+          <a
+            className="link-underline break-all"
+            href="mailto:contact@propulsion-ia.services"
+          >
+            contact@propulsion-ia.services
+          </a>
+        </p>
+        <p>
+          En cas de réclamation, l'utilisateur peut saisir la CNIL (
+          <a
+            className="link-underline"
+            href="https://www.cnil.fr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            www.cnil.fr
+          </a>
+          ).
+        </p>
+      </LegalSection>
+
+      <LegalSection title="8. Cookies">
+        <p>
+          Le site peut utiliser des cookies strictement nécessaires à son
+          fonctionnement et, le cas échéant, des cookies de mesure d'audience.
+        </p>
+        <p>
+          L'utilisateur peut configurer son navigateur pour refuser tout ou
+          partie des cookies.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="9. Sécurité">
+        <p>
+          PROPULSION IA met en œuvre des mesures techniques et
+          organisationnelles appropriées afin de garantir la sécurité et la
+          confidentialité des données traitées.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="10. Droit applicable">
+        <p>
+          Les présentes mentions légales sont soumises au droit français.
+        </p>
+        <p>
+          Tout litige relatif à leur interprétation ou à l'utilisation du site
+          relève de la compétence exclusive des tribunaux du ressort du siège
+          social de PROPULSION IA.
         </p>
       </LegalSection>
     </LegalLayout>
