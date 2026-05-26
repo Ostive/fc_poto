@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3B1659"/>
+      <stop offset="100%" stop-color="#5B2A86"/>
+    </linearGradient>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="22" height="22" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="22" stroke="#F2EDE4" stroke-width="2" stroke-opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#hatch)"/>
+  <circle cx="1050" cy="100" r="180" fill="#E0531F" opacity="0.18"/>
+  <circle cx="120" cy="540" r="220" fill="#7B2CBF" opacity="0.25"/>
+
+  <g font-family="system-ui,sans-serif" fill="#F2EDE4">
+    <text x="80" y="120" font-size="14" letter-spacing="4" font-weight="500" opacity="0.75">FOOTBALL CLUB DE TOULOUSE — EST. 2014</text>
+    <text x="76" y="320" font-size="170" font-weight="900" letter-spacing="-7">FC POTO</text>
+    <text x="80" y="400" font-size="32" font-weight="500" opacity="0.85" font-style="italic">Le ballon avant tout. Le maillot pour toujours.</text>
+    <text x="80" y="560" font-size="14" letter-spacing="4" font-weight="500" opacity="0.65">FCPOTO.COM · STADE DE SESQUIÈRES · TOULOUSE</text>
+  </g>
+
+  <g transform="translate(990,460)">
+    <path d="M0 0 H110 V60 C110 84 55 100 55 100 C55 100 0 84 0 60 Z" fill="#F2EDE4"/>
+    <text x="55" y="58" font-family="system-ui,sans-serif" font-weight="900" font-size="34" letter-spacing="-1" fill="#5B2A86" text-anchor="middle">FCP</text>
+    <circle cx="55" cy="78" r="5" fill="#E0531F"/>
+  </g>
+</svg>

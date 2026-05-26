@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <rect width="400" height="200" fill="#0E0E10" stroke="#F2EDE4" stroke-width="2" stroke-dasharray="6 6"/>
+  <g font-family="system-ui,sans-serif" fill="#F2EDE4" text-anchor="middle">
+    <text x="200" y="92" font-size="22" font-weight="800" letter-spacing="-0.5">LOGO SPONSOR</text>
+    <text x="200" y="120" font-size="11" letter-spacing="4" font-weight="500" opacity="0.55">VERSION FOND SOMBRE</text>
+  </g>
+</svg>
