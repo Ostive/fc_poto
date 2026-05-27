@@ -132,7 +132,7 @@ export const series: Series[] = [
     description:
       "Les équipes que l'on croise chaque saison au sein du FSGT 31 · adversaires, partenaires, copains de championnat. Sans elles, pas de match · sans match, pas de club. Une série hommage à celles et ceux qui font vivre le foot amateur en Haute-Garonne.",
     cover: "/gallery/equipes-fsgt/01.webp",
-    photos: Array.from({ length: 28 }, (_, i) => ({
+    photos: Array.from({ length: 15 }, (_, i) => ({
       src: `/gallery/equipes-fsgt/${String(i + 1).padStart(2, "0")}.webp`,
       caption: undefined
     }))
@@ -447,6 +447,10 @@ export const featuredEvent = {
   description:
     "Deuxième édition du Tournoi des Sélections en Occitanie, organisée par la FSGT et les POTOS de LARDENNE à Pâques 2026. Les sélections départementales en foot à 11 étaient présentes, ainsi que les équipes de foot à 7 hommes, le walking foot et les équipes féminines en foot à 7. La fédération FSGT était présente pour ce bel événement, un week-end de plaisir.",
   cover: "/gallery/equipes-fsgt/05.webp",
+  winnersPhotos: [
+    "/gallery/tournoi-selections-2026/podium-01.webp",
+    "/gallery/tournoi-selections-2026/podium-02.webp"
+  ],
   photoAlbumHref: "/galerie/equipes-fsgt",
   liveStreams: [
     {

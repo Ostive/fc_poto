@@ -394,8 +394,8 @@ function DisciplineSection({ d, index }: { d: Discipline; index: number }) {
             href={d.fsgtLink}
             target="_blank"
             rel="noreferrer noopener"
-            className={`inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase link-underline ${
-              isDark ? "text-cream/70" : "text-ink/60"
+            className={`inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase link-underline font-medium ${
+              isDark ? "text-cream/90" : "text-ink/85"
             }`}
           >
             Source · FSGT 31 <ExternalArrow className="w-3 h-3" />

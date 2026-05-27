@@ -88,7 +88,7 @@ export function Foot7TeamSection({
           href={externalUrl}
           target="_blank"
           rel="noreferrer noopener"
-          className="font-mono text-[10px] tracking-[0.18em] uppercase link-underline text-ink/55"
+          className="font-mono text-[11px] tracking-[0.18em] uppercase link-underline text-ink/85 font-medium"
         >
           Calendrier officiel ↗
         </a>

@@ -398,23 +398,36 @@ export default async function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-12 lg:col-span-4 relative min-h-[280px] lg:min-h-0 overflow-hidden">
-                <Image
-                  src={featuredEvent.cover}
-                  alt={featuredEvent.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-navy-deep/70 via-navy/30 to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2">
-                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-cream/80">
-                    {featuredEvent.duration}
-                  </span>
-                  <span className="font-display italic text-[clamp(2rem,4vw,3rem)] leading-[0.95] tracking-tighter2 text-cream">
-                    Pâques<br />
-                    <span className="not-italic">2026</span>
-                  </span>
+              <div className="col-span-12 lg:col-span-4 relative min-h-[280px] lg:min-h-0 grid grid-rows-2 gap-0.5 bg-cream/15">
+                {/* Podium 1 · haut */}
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={featuredEvent.winnersPhotos[0]}
+                    alt="Gagnants du tournoi · podium"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                {/* Podium 2 · bas + label */}
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={featuredEvent.winnersPhotos[1]}
+                    alt="Gagnants du tournoi · podium"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-navy-deep/75 via-navy/30 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-5 left-5 right-5 flex flex-col gap-1">
+                    <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-cream/80">
+                      Podium
+                    </span>
+                    <span className="font-display italic text-[clamp(1.5rem,3vw,2.25rem)] leading-[0.95] tracking-tighter2 text-cream">
+                      Pâques<br />
+                      <span className="not-italic">2026</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -685,7 +698,7 @@ export default async function HomePage() {
             <Link href="/galerie/equipes-fsgt" className="group block">
               <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
                 <Image
-                  src="/gallery/equipes-fsgt/18.webp"
+                  src="/gallery/equipes-fsgt/12.webp"
                   alt="Une équipe FSGT 31"
                   fill
                   sizes="(max-width: 768px) 50vw, 33vw"
