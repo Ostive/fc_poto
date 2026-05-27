@@ -56,7 +56,6 @@ export default function ContactPage() {
               Remplis le formulaire ci-dessous. En cliquant sur « Envoyer ma
               demande », ta messagerie (Gmail, Outlook…) s'ouvre avec le
               message déjà écrit · tu n'as plus qu'à confirmer l'envoi.
-              On te répond sous 48 h en semaine.
             </p>
           </div>
         </div>
@@ -234,9 +233,6 @@ export default function ContactPage() {
                   153 avenue de Lardenne<br />
                   31000 Toulouse
                 </p>
-                <p className="mt-6 font-mono text-[10px] tracking-[0.22em] uppercase text-cream/70 relative">
-                  Permanence inscription · mardi & jeudi · 18h-20h
-                </p>
               </div>
 
               <div className="rounded-[24px] bg-ink text-cream p-8">
@@ -253,7 +249,7 @@ export default function ContactPage() {
                 </p>
                 <p className="mt-4 text-[14px] text-cream/70 leading-relaxed">
                   Une seule adresse pour les joueurs, bénévoles, sponsors, presse
-                  et toute autre demande. Réponse sous 48 h en semaine.
+                  et toute autre demande.
                 </p>
               </div>
             </div>
@@ -261,30 +257,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-32 mb-24">
-        <SectionLabel index="02" title="Questions fréquentes" kicker="Trois réponses, vite" />
-        <div className="mt-10 col-rule">
-          {[
-            {
-              q: "À quoi ressemble un essai ?",
-              a: "Tu viens le mardi à 19h, en tenue, avec une bouteille d'eau. L'entraîneur fait sa séance habituelle, et on t'oriente vers le groupe qui te correspond. Aucun engagement avant la troisième séance."
-            }
-          ].map((f, i) => (
-            <Reveal key={i} delay={i * 0.06}>
-              <details className="group py-6">
-                <summary className="cursor-pointer flex items-start justify-between gap-6 list-none">
-                  <h3 className="font-display text-[clamp(1.25rem,2vw,1.75rem)] tracking-tighter2 leading-[1.1]">
-                    {f.q}
-                  </h3>
-                  <span className="font-mono text-2xl text-ocre transition-transform group-open:rotate-45 shrink-0">+</span>
-                </summary>
-                <p className="mt-5 max-w-2xl text-[15px] text-ink/75 leading-relaxed">{f.a}</p>
-              </details>
-            </Reveal>
-          ))}
-        </div>
-      </section>
     </>
   );
 }
