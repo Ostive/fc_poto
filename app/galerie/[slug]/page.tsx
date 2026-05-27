@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { series } from "@/lib/data";
 import { Reveal } from "@/components/Reveal";
+import { PhotoGallery } from "@/components/PhotoGallery";
 
 export async function generateStaticParams() {
   return series.map((s) => ({ slug: s.slug }));
@@ -67,31 +68,7 @@ export default async function SeriePage({
       {/* PHOTOS */}
       {serie.photos.length > 0 ? (
         <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-16">
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
-            {serie.photos.map((photo, i) => (
-              <Reveal key={photo.src} delay={(i % 4) * 0.05} className="mb-6 break-inside-avoid">
-                <figure className="relative rounded-[18px] overflow-hidden bg-paper">
-                  <div
-                    className="relative w-full"
-                    style={{ aspectRatio: i % 3 === 1 ? "4/5" : i % 3 === 2 ? "5/4" : "1/1" }}
-                  >
-                    <Image
-                      src={photo.src}
-                      alt={photo.caption || `${serie.title} · photo ${i + 1}`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  {photo.caption && (
-                    <figcaption className="absolute bottom-3 left-3 right-3 font-mono text-[10px] tracking-[0.22em] uppercase text-cream bg-ink/55 backdrop-blur-sm rounded-full px-3 py-1.5 w-fit">
-                      {photo.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+          <PhotoGallery photos={serie.photos} alt={serie.title} />
         </section>
       ) : (
         <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-16">
