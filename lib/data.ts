@@ -445,7 +445,7 @@ export const featuredEvent = {
   duration: "Pâques 2026",
   title: "Tournoi des Sélections en Occitanie",
   description:
-    "Deuxième édition du Tournoi des Sélections en Occitanie, organisé par le FC POTO à Pâques 2026 au stade de Lardenne. Sélections départementales en foot à 11, équipes en foot à 7 et walking foot, toute la communauté FSGT 31 réunie pour un week-end.",
+    "Deuxième édition du Tournoi des Sélections en Occitanie, organisée par la FSGT et les POTOS de LARDENNE à Pâques 2026. Les sélections départementales en foot à 11 étaient présentes, ainsi que les équipes de foot à 7 hommes, le walking foot et les équipes féminines en foot à 7. La fédération FSGT était présente pour ce bel événement, un week-end de plaisir.",
   cover: "/gallery/equipes-fsgt/05.webp",
   photoAlbumHref: "/galerie/equipes-fsgt",
   liveStreams: [
