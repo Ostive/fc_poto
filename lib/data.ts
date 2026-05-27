@@ -185,7 +185,8 @@ export const news: News[] = [
       { src: "/gallery/tournoi-walking-foot-2025-04-19/10.webp" },
       { src: "/gallery/tournoi-walking-foot-2025-04-19/11.webp" },
       { src: "/gallery/tournoi-walking-foot-2025-04-19/12.webp" },
-      { src: "/gallery/tournoi-walking-foot-2025-04-19/13.webp" }
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/13.webp" },
+      { src: "/gallery/tournoi-walking-foot-2025-04-19/14.webp" }
     ]
   }
 ];
@@ -438,20 +439,48 @@ export const disciplines: Discipline[] = [
   }
 ];
 
-// Événement à la une · 2024
+// Événement à la une · Tournoi des Sélections 2026 (Pâques)
 export const featuredEvent = {
-  year: "2024",
-  duration: "4 jours d'exception",
-  title: "1er Tournoi des Sélections en Occitanie",
+  year: "2026",
+  duration: "Pâques 2026",
+  title: "Tournoi des Sélections en Occitanie",
   description:
-    "Un événement historique organisé par le FC POTO : ~1 000 participants (joueurs, familles, public, élus) réunis pour célébrer le football sous toutes ses formes.",
-  numbers: [
-    { value: "8", label: "Sélections départementales", sublabel: "Football à 11" },
-    { value: "18", label: "Équipes totales", sublabel: "Football à 7" },
-    { value: "6", label: "Équipes mixtes", sublabel: "Walking Foot" }
+    "Deuxième édition du Tournoi des Sélections en Occitanie, organisé par le FC POTO à Pâques 2026 au stade de Lardenne. Sélections départementales en foot à 11, équipes en foot à 7 et walking foot, toute la communauté FSGT 31 réunie pour un week-end.",
+  cover: "/gallery/equipes-fsgt/05.webp",
+  photoAlbumHref: "/galerie/equipes-fsgt",
+  liveStreams: [
+    {
+      url: "https://www.youtube.com/live/TNqwglJx_FY",
+      label: "Live · partie 1"
+    },
+    {
+      url: "https://www.youtube.com/live/H45NnAiUxjY",
+      label: "Live · partie 2"
+    }
   ],
-  press: "Forte couverture médiatique : presse, réseaux, médias spécialisés"
+  // À remplir quand on aura les vrais chiffres de l'édition 2026 (sélections,
+  // équipes foot 7, équipes walking foot). En attendant, la grille n'apparaît pas.
+  numbers: [] as { value: string; label: string; sublabel: string }[],
+  press: "Tournoi filmé en direct · interviews des partenaires du club"
 };
+
+// Éditions précédentes du même événement, affichées en-dessous de l'édition
+// à la une (panneaux plus petits, sans CTA).
+export const previousEditions = [
+  {
+    year: "2024",
+    duration: "4 jours d'exception",
+    title: "1ère édition · Tournoi des Sélections en Occitanie",
+    description:
+      "Édition inaugurale organisée par le FC POTO à Lardenne. Environ 1 000 participants pour fêter les 10 ans du club et célébrer le football sous toutes ses formes.",
+    numbers: [
+      { value: "8", label: "Sélections", sublabel: "Foot à 11" },
+      { value: "18", label: "Équipes", sublabel: "Foot à 7" },
+      { value: "6", label: "Équipes mixtes", sublabel: "Walking Foot" }
+    ],
+    press: "Forte couverture médiatique · presse, réseaux, médias spécialisés"
+  }
+];
 
 // Les 3 valeurs du club (vraies, pas inventées)
 export const values = [
@@ -474,16 +503,42 @@ export const values = [
 
 export type Partner = {
   name: string;
-  tier: "Maillot" | "Tribune" | "Terrain" | "Ami";
-  city: string;
-  since: number;
-  blurb: string;
+  tier: "Or" | "Argent" | "Bronze";
+  logo: string;
+  website?: string;
 };
 
-// Partenaires réels · à remplir avec les vrais noms des sponsors du club.
-// Tant que la liste est vide, la page /partenaires montre uniquement les 4 formules
-// d'engagement et un état "Premiers partenaires en cours de signature".
-export const partners: Partner[] = [];
+// Partenaires réels du FC Poto. Affichés sur /partenaires avec leur logo.
+// Niveau Or : logo site + affiches + maillots
+// Niveau Argent : logo site + affiches événements
+// Niveau Bronze : logo site
+export const partners: Partner[] = [
+  {
+    name: "Propulsion Digitale",
+    tier: "Or",
+    logo: "/partenaire/propulsion-ai.png"
+  },
+  {
+    name: "Groupe Lethis",
+    tier: "Or",
+    logo: "/partenaire/groupe-lethis.png"
+  },
+  {
+    name: "BPM Shirt",
+    tier: "Or",
+    logo: "/partenaire/bpm-shirt.png"
+  },
+  {
+    name: "Toulouse Lardenne",
+    tier: "Or",
+    logo: "/partenaire/toulouse-lardennes.png"
+  },
+  {
+    name: "Gardénergie",
+    tier: "Or",
+    logo: "/partenaire/gardenergie.png"
+  }
+];
 
 // Palmarès / jalons · uniquement les faits confirmés.
 // À enrichir au fur et à mesure (titres, montées, coupes) quand on aura les vrais résultats.

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { championship, club, disciplines, featuredEvent, news, practices, stats, values } from "@/lib/data";
+import { championship, club, disciplines, featuredEvent, news, practices, previousEditions, stats, values } from "@/lib/data";
 import { getChampionshipData } from "@/lib/fsgt";
 import { NamesMarquee } from "@/components/Ticker";
 import { Countdown } from "@/components/Countdown";
@@ -351,44 +351,124 @@ export default async function HomePage() {
                     {featuredEvent.title}
                   </h3>
                   <p className="mt-6 text-[15px] md:text-[17px] leading-relaxed text-cream/85 max-w-2xl">
-                    Un événement historique organisé par le FC POTO :{" "}
-                    <strong className="text-cream">~1 000 participants</strong>{" "}
-                    (joueurs, familles, public, élus) réunis pour célébrer le
-                    football sous toutes ses formes.
+                    {featuredEvent.description}
                   </p>
 
-                  <div className="mt-10 grid grid-cols-3 gap-4">
-                    {featuredEvent.numbers.map((n) => (
-                      <div key={n.label} className="border-l-2 border-cream/30 pl-4">
-                        <p className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] leading-none">
-                          {n.value}
-                        </p>
-                        <p className="mt-2 font-mono text-[10px] tracking-[0.18em] uppercase text-cream/70 leading-snug">
-                          {n.label}<br />
-                          <span className="text-cream/55">{n.sublabel}</span>
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                  {featuredEvent.numbers.length > 0 && (
+                    <div className="mt-10 grid grid-cols-3 gap-4">
+                      {featuredEvent.numbers.map((n) => (
+                        <div key={n.label} className="border-l-2 border-cream/30 pl-4">
+                          <p className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] leading-none">
+                            {n.value}
+                          </p>
+                          <p className="mt-2 font-mono text-[10px] tracking-[0.18em] uppercase text-cream/70 leading-snug">
+                            {n.label}<br />
+                            <span className="text-cream/55">{n.sublabel}</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   <p className="mt-10 flex items-center gap-3 font-mono text-[11px] tracking-[0.18em] uppercase text-cream/65">
                     <TrophyIcon className="w-4 h-4" />
                     {featuredEvent.press}
                   </p>
+
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link
+                      href={featuredEvent.photoAlbumHref}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-cream text-ink text-[13px] hover:bg-ocre hover:text-cream transition-colors"
+                    >
+                      <PhotoIcon className="w-4 h-4" />
+                      Voir l'album photo
+                    </Link>
+                    {featuredEvent.liveStreams.map((live) => (
+                      <a
+                        key={live.url}
+                        href={live.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-cream/30 text-[13px] hover:bg-cream hover:text-ink transition-colors"
+                      >
+                        <YouTubeIcon className="w-4 h-4" />
+                        {live.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="col-span-12 lg:col-span-4 relative min-h-[280px] lg:min-h-0 bg-navy-electric flex items-center justify-center p-10 lg:p-12">
-                <div className="absolute inset-0 hatch opacity-20" />
-                <span className="relative font-display italic text-[clamp(5rem,11vw,9rem)] leading-[0.85] tracking-tighter2 text-cream/95 text-center">
-                  10<br />
-                  <span className="not-italic text-[0.35em] tracking-[0.2em] font-mono text-cream/65">
-                    ANS DU CLUB
+              <div className="col-span-12 lg:col-span-4 relative min-h-[280px] lg:min-h-0 overflow-hidden">
+                <Image
+                  src={featuredEvent.cover}
+                  alt={featuredEvent.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-navy-deep/70 via-navy/30 to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2">
+                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-cream/80">
+                    {featuredEvent.duration}
                   </span>
-                </span>
+                  <span className="font-display italic text-[clamp(2rem,4vw,3rem)] leading-[0.95] tracking-tighter2 text-cream">
+                    Pâques<br />
+                    <span className="not-italic">2026</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </Reveal>
+
+        {/* ÉDITIONS PRÉCÉDENTES */}
+        {previousEditions.length > 0 && (
+          <div className="mt-12">
+            <div className="flex items-baseline gap-4 mb-6">
+              <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-ink/45">↳</span>
+              <h3 className="font-display text-[clamp(1.1rem,2vw,1.5rem)] tracking-tighter2">
+                Édition{previousEditions.length > 1 ? "s" : ""} précédente{previousEditions.length > 1 ? "s" : ""}
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {previousEditions.map((ed, i) => (
+                <Reveal key={ed.year} delay={i * 0.06}>
+                  <article className="h-full rounded-[24px] border border-ink/15 bg-cream p-7 lg:p-8 flex flex-col gap-5">
+                    <div className="flex items-baseline justify-between gap-3 font-mono text-[10px] tracking-[0.22em] uppercase text-ink/55">
+                      <span>{ed.year} · {ed.duration}</span>
+                    </div>
+                    <h4 className="font-display text-[clamp(1.5rem,2.6vw,2rem)] leading-[1.05] tracking-tighter2">
+                      {ed.title}
+                    </h4>
+                    <p className="text-[14px] md:text-[15px] leading-relaxed text-ink/75">
+                      {ed.description}
+                    </p>
+                    {ed.numbers.length > 0 && (
+                      <div className="grid grid-cols-3 gap-3 pt-2">
+                        {ed.numbers.map((n) => (
+                          <div key={n.label} className="border-l-2 border-ink/15 pl-3">
+                            <p className="font-display text-[clamp(1.25rem,2.4vw,1.625rem)] leading-none tabular-nums">
+                              {n.value}
+                            </p>
+                            <p className="mt-1.5 font-mono text-[9px] tracking-[0.18em] uppercase text-ink/55 leading-snug">
+                              {n.label}<br />
+                              <span className="text-ink/40">{n.sublabel}</span>
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {ed.press && (
+                      <p className="mt-auto pt-2 font-mono text-[10px] tracking-[0.18em] uppercase text-ink/55">
+                        {ed.press}
+                      </p>
+                    )}
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* RECENT RESULTS */}
@@ -743,6 +823,24 @@ function CalendarIcon({ className = "w-5 h-5" }: { className?: string }) {
       <path d="M16 2v4" />
       <rect width="18" height="18" x="3" y="4" rx="2" />
       <path d="M3 10h18" />
+    </svg>
+  );
+}
+
+function PhotoIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect width="18" height="18" x="3" y="3" rx="2" />
+      <circle cx="9" cy="9" r="2" />
+      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+    </svg>
+  );
+}
+
+function YouTubeIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
     </svg>
   );
 }

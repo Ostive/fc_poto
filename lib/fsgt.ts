@@ -13,7 +13,10 @@ import { unstable_cache } from "next/cache";
 import type { Match, Standing } from "./data";
 import { fallbackMatches, fallbackStandings } from "./data";
 
+// URL de la poule FSGT à scraper. Configurable via .env pour pouvoir changer
+// de poule (montée / descente / nouvelle saison) sans toucher au code.
 const URL_BASE =
+  process.env.FSGT_CHAMPIONSHIP_URL ||
   "https://fsgt31.fr/gestion-de-championnat/calendar/21-football-11-excellence-poule-a.html";
 const TARGET_TEAM = "POTO";
 const REVALIDATE_SECONDS = 60 * 60; // 1h
