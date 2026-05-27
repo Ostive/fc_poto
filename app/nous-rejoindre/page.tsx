@@ -54,9 +54,9 @@ export default function ContactPage() {
             </h1>
             <p className="mt-10 max-w-2xl text-[18px] leading-relaxed">
               Remplis le formulaire ci-dessous. En cliquant sur « Envoyer ma
-              demande », ton client mail s'ouvre avec un message déjà
-              pré-rempli · il ne te reste qu'à cliquer sur « Envoyer ».
-              Réponse sous 48 h ouvrées.
+              demande », ta messagerie (Gmail, Outlook…) s'ouvre avec le
+              message déjà écrit · tu n'as plus qu'à confirmer l'envoi.
+              On te répond sous 48 h en semaine.
             </p>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function ContactPage() {
                 </p>
                 <p className="mt-4 text-[14px] text-cream/70 leading-relaxed">
                   Une seule adresse pour les joueurs, bénévoles, sponsors, presse
-                  et toute autre demande. Réponse sous 48 h ouvrées.
+                  et toute autre demande. Réponse sous 48 h en semaine.
                 </p>
               </div>
             </div>
