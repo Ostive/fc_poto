@@ -83,13 +83,7 @@ export default async function HomePage() {
               <h1 className="font-display leading-[0.86] tracking-tighter2 text-[clamp(3rem,11vw,11rem)]">
                 <span className="block">FOOTBALL</span>
                 <span className="block italic text-navy">Club</span>
-                <span className="flex items-end gap-3 md:gap-5 flex-wrap">
-                  <span>POTO</span>
-                  <span className="font-mono font-normal not-italic text-[10px] md:text-[12px] tracking-[0.2em] uppercase text-ink/50 mb-2 md:mb-6 leading-tight">
-                    /pɔ.to/<br />
-                    n.m. coéquipier
-                  </span>
-                </span>
+                <span className="block">POTO</span>
               </h1>
 
               <div className="mt-10 grid grid-cols-12 gap-6 items-end">
@@ -545,10 +539,13 @@ export default async function HomePage() {
           kicker="Aperçu de la galerie · matchs, soins, communauté"
         />
         <div className="mt-10 grid grid-cols-12 gap-4 lg:gap-6">
-          {/* Row 1 · une grande + deux empilées */}
-          <Reveal className="col-span-12 md:col-span-7">
-            <Link href="/actualites/tournoi-walking-foot-2025-04-19" className="group block">
-              <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+          {/* Grande photo · s'étire sur la hauteur des 2 petites à droite */}
+          <Reveal className="col-span-12 md:col-span-7 md:row-span-2 flex">
+            <Link
+              href="/actualites/tournoi-walking-foot-2025-04-19"
+              className="group block w-full h-full"
+            >
+              <div className="relative w-full h-full aspect-[5/4] md:aspect-auto overflow-hidden rounded-[24px] bg-ink/10">
                 <Image
                   src="/gallery/tournoi-walking-foot-2025-04-19/coupe-fcpoto.jpg"
                   alt="Trophée du tournoi"
@@ -559,36 +556,38 @@ export default async function HomePage() {
               </div>
             </Link>
           </Reveal>
-          <div className="col-span-12 md:col-span-5 grid gap-4 lg:gap-6">
-            <Reveal delay={0.05}>
-              <Link href="/galerie/equipes-fsgt" className="group block">
-                <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
-                  <Image
-                    src="/gallery/equipes-fsgt/05.webp"
-                    alt="Une équipe de la communauté FSGT"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                </div>
-              </Link>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <Link href="/galerie/cote-soins" className="group block">
-                <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
-                  <Image
-                    src="/gallery/cote-soins/02.webp"
-                    alt="Côté soins · vie du club"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                </div>
-              </Link>
-            </Reveal>
-          </div>
 
-          {/* Row 2 · trois identiques */}
+          {/* Petite haut droite */}
+          <Reveal delay={0.05} className="col-span-12 md:col-span-5">
+            <Link href="/galerie/equipes-fsgt" className="group block">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                <Image
+                  src="/gallery/equipes-fsgt/05.webp"
+                  alt="Une équipe de la communauté FSGT"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </Link>
+          </Reveal>
+
+          {/* Petite bas droite */}
+          <Reveal delay={0.1} className="col-span-12 md:col-span-5">
+            <Link href="/galerie/cote-soins" className="group block">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
+                <Image
+                  src="/gallery/cote-soins/02.webp"
+                  alt="Côté soins · vie du club"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </Link>
+          </Reveal>
+
+          {/* Rangée du bas · trois identiques */}
           <Reveal delay={0.15} className="col-span-6 md:col-span-4">
             <Link href="/actualites/tournoi-walking-foot-2025-04-19" className="group block">
               <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] bg-ink/10">
@@ -724,13 +723,6 @@ function formatDateShort(iso: string) {
   });
 }
 
-function PracticeIcon({ name }: { name: "trophy" | "users" | "heart" }) {
-  const common = "w-6 h-6";
-  if (name === "trophy") return <TrophyIcon className={common} />;
-  if (name === "users") return <UsersIcon className={common} />;
-  return <HeartIcon className={common} />;
-}
-
 function TrophyIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -740,25 +732,6 @@ function TrophyIcon({ className = "w-6 h-6" }: { className?: string }) {
       <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
       <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
       <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-    </svg>
-  );
-}
-
-function UsersIcon({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
-  );
-}
-
-function HeartIcon({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
     </svg>
   );
 }

@@ -3,7 +3,7 @@ import { LegalLayout, LegalSection } from "@/components/LegalLayout";
 export const metadata = {
   title: "Politique de confidentialité · FC Poto",
   description:
-    "Politique de confidentialité du site fcpoto.com · gestion des données personnelles par PROPULSION IA, conforme au RGPD."
+    "Comment le FC Poto collecte, utilise et protège tes données personnelles. Conforme au RGPD."
 };
 
 export default function PolitiqueConfidentialitePage() {
@@ -49,94 +49,99 @@ export default function PolitiqueConfidentialitePage() {
 
       <LegalSection title="2. Données personnelles collectées">
         <p>
-          PROPULSION IA collecte uniquement les données strictement nécessaires
-          à ses activités professionnelles, notamment :
+          Le site collecte uniquement les données que tu fournis volontairement,
+          notamment via le formulaire de contact ou l'inscription à la lettre
+          du club :
         </p>
         <ul className="grid gap-2 list-disc pl-6">
-          <li>Identité (nom, prénom)</li>
-          <li>Coordonnées professionnelles</li>
-          <li>Société, fonction</li>
-          <li>Contenus transmis</li>
-          <li>Données techniques minimales</li>
+          <li>Nom, prénom et adresse e-mail</li>
+          <li>
+            Selon le profil choisi : date de naissance, poste, club précédent
+            (candidature joueur) ; volet bénévolat (bénévole) ; entreprise et
+            site web (sponsor)
+          </li>
+          <li>Contenu du message envoyé</li>
+          <li>Adresse e-mail pour la lettre mensuelle du club</li>
+          <li>
+            Données techniques minimales (logs serveur, statistiques d'audience
+            anonymes)
+          </li>
         </ul>
         <p>
-          Aucune donnée sensible au sens du RGPD n'est collectée
-          volontairement.
+          Aucune donnée sensible au sens du RGPD n'est collectée volontairement.
         </p>
       </LegalSection>
 
       <LegalSection title="3. Finalités des traitements">
         <p>Les données sont traitées exclusivement pour les finalités suivantes :</p>
         <ul className="grid gap-2 list-disc pl-6">
-          <li>Gestion des demandes de contact et d'information</li>
-          <li>Relation commerciale B2B</li>
-          <li>Exécution des prestations (IA, automatisation, conseil, formation)</li>
-          <li>Suivi contractuel et facturation</li>
-          <li>Sécurité et bon fonctionnement du site</li>
+          <li>Répondre aux demandes envoyées via le formulaire de contact (joueurs, bénévoles, sponsors, presse)</li>
+          <li>Gérer la vie associative du FC Poto : licences, événements, communication interne</li>
+          <li>Envoyer la lettre du club aux personnes qui s'y sont abonnées</li>
+          <li>Tenir des statistiques anonymes sur la fréquentation du site</li>
+          <li>Garantir la sécurité et le bon fonctionnement du site</li>
         </ul>
         <p>
-          Les données ne sont jamais utilisées à des fins publicitaires non
-          sollicitées.
+          Les données ne sont jamais vendues, louées ou utilisées à des fins
+          publicitaires.
         </p>
       </LegalSection>
 
       <LegalSection title="4. Base légale des traitements">
         <p>Les traitements reposent sur :</p>
         <ul className="grid gap-2 list-disc pl-6">
-          <li>Intérêt légitime de PROPULSION IA (réponse aux demandes, prospection B2B)</li>
-          <li>Exécution de mesures précontractuelles ou contractuelles</li>
-          <li>Respect d'obligations légales (comptables, fiscales)</li>
+          <li>Intérêt légitime de l'association (répondre aux demandes, gérer la vie du club)</li>
+          <li>Consentement de la personne (inscription à la lettre du club, cookies non essentiels)</li>
+          <li>Exécution d'un contrat (engagement de licence, partenariats avec sponsors)</li>
+          <li>Respect d'obligations légales (comptables, fiscales, fédérales)</li>
         </ul>
       </LegalSection>
 
-      <LegalSection title="5. Confidentialité des clients et des projets">
+      <LegalSection title="5. Confidentialité des membres et licenciés">
         <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-ocre">
-          Point clé · confidentialité totale
+          Point clé · les coordonnées ne sortent pas du club
         </p>
         <p>
-          Les noms des entreprises clientes, partenaires, projets, données
-          métiers, documents, processus internes ou informations stratégiques
-          ne sont en aucun cas divulgués, publiquement ou à des tiers, sauf
-          dans les cas suivants :
+          Les coordonnées des joueurs, joueuses, bénévoles et licenciés ne
+          sont jamais transmises à des tiers (autres clubs, sponsors,
+          plateformes commerciales) sauf dans les cas suivants :
         </p>
         <ul className="grid gap-2 list-disc pl-6">
           <li>Obligation légale ou réglementaire</li>
-          <li>Demande expresse et écrite du client concerné</li>
-          <li>Nécessité technique encadrée par contrat (sous-traitant, hébergeur)</li>
+          <li>Accord exprès et écrit de la personne concernée</li>
+          <li>Nécessité technique encadrée par contrat (hébergeur du site, outil de fédération sportive)</li>
         </ul>
         <p>
-          Les références commerciales ne sont utilisées qu'avec accord écrit
-          préalable du client.
+          Les photos publiées sur le site et la lettre du club ne le sont
+          qu'avec accord (explicite ou implicite quand la prise de vue se fait
+          dans un cadre public, comme un match ou un tournoi).
         </p>
       </LegalSection>
 
       <LegalSection title="6. Destinataires des données">
         <p>Les données sont accessibles uniquement :</p>
         <ul className="grid gap-2 list-disc pl-6">
-          <li>Aux dirigeants et intervenants habilités de PROPULSION IA</li>
-          <li>
-            Le cas échéant, à des sous-traitants techniques strictement
-            nécessaires (hébergement, outils SaaS, plateformes IA)
-          </li>
+          <li>Aux membres habilités du bureau et de l'encadrement du FC Poto</li>
+          <li>À PROPULSION IA, éditeur technique du site, pour la maintenance</li>
+          <li>Le cas échéant, à l'hébergeur du site et aux outils de fédération sportive (FSGT)</li>
         </ul>
         <p>
-          Les sous-traitants sont contractuellement tenus à une obligation de
-          confidentialité et de conformité RGPD.
+          Tous les destinataires sont tenus à une obligation de confidentialité
+          et de conformité RGPD.
         </p>
       </LegalSection>
 
       <LegalSection title="7. Transferts hors Union Européenne">
         <p>
-          Certains outils techniques utilisés (hébergement, IA, automatisation)
-          peuvent impliquer des transferts de données hors UE.
+          Certains outils techniques utilisés (hébergement, statistiques
+          d'audience) peuvent impliquer des transferts de données hors UE.
         </p>
         <p>
-          Dans ce cas, PROPULSION IA s'assure que ces transferts sont encadrés
-          par :
+          Dans ce cas, des garanties sont mises en place :
         </p>
         <ul className="grid gap-2 list-disc pl-6">
-          <li>Clauses contractuelles types</li>
-          <li>Niveau de protection adéquat reconnu par la Commission européenne</li>
+          <li>Clauses contractuelles types validées par la Commission européenne</li>
+          <li>Pays bénéficiant d'une décision d'adéquation</li>
         </ul>
       </LegalSection>
 
@@ -185,14 +190,28 @@ export default function PolitiqueConfidentialitePage() {
           <li>Droit à la portabilité</li>
         </ul>
         <p>
-          Toute demande peut être adressée à :{" "}
-          <a
-            className="link-underline break-all"
-            href="mailto:contact@propulsion-ia.services"
-          >
-            contact@propulsion-ia.services
-          </a>
+          Pour exercer ces droits, tu peux écrire :
         </p>
+        <ul className="grid gap-2 list-disc pl-6">
+          <li>
+            Au club :{" "}
+            <a
+              className="link-underline break-all"
+              href="mailto:footballclub.poto@gmail.com"
+            >
+              footballclub.poto@gmail.com
+            </a>
+          </li>
+          <li>
+            À l'éditeur technique du site (PROPULSION IA) :{" "}
+            <a
+              className="link-underline break-all"
+              href="mailto:contact@propulsion-ia.services"
+            >
+              contact@propulsion-ia.services
+            </a>
+          </li>
+        </ul>
         <p>Une réponse sera apportée dans un délai maximal d'un mois.</p>
         <p>
           En cas de litige, vous pouvez introduire une réclamation auprès de

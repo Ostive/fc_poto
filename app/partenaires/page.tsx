@@ -51,7 +51,7 @@ const tiers: { name: Partner["tier"]; subtitle: string; price: string; bullets: 
     bullets: [
       "Mention dans la rubrique « Les amis du club »",
       "Reçu fiscal (66 % déductibles)",
-      "Newsletter et invitation à l'AG annuelle"
+      "Newsletter et invitation à l'Assemblée Générale annuelle"
     ]
   }
 ];
