@@ -12,9 +12,13 @@
 
 import { unstable_cache } from "next/cache";
 
+// URLs des feuilles Google Sheets foot à 7. Configurables via .env pour pouvoir
+// changer de poule (montée / descente / nouvelle saison) sans toucher au code.
 const POULE_3_URL =
+  process.env.FOOT7_POULE_A_CSV ||
   "https://docs.google.com/spreadsheets/d/1mIRqjiDJevMeSNMaWnXX-t7fXEqBlALtiMPKXz-b_kM/export?format=csv&gid=1";
 const POULE_7_URL =
+  process.env.FOOT7_POULE_B_CSV ||
   "https://docs.google.com/spreadsheets/d/1PHkc2D-sWH2eGmggtO-RW9GUw2xFxWkyjYu9qpdjvg0/export?format=csv&gid=1";
 
 const TARGET = "POTO";
