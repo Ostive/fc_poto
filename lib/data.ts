@@ -518,7 +518,7 @@ export type Partner = {
 // Niveau Bronze : logo site
 export const partners: Partner[] = [
   {
-    name: "Propulsion Digitale",
+    name: "Propulsion IA",
     tier: "Or",
     logo: "/partenaire/propulsion-ai.png"
   },

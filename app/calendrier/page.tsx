@@ -98,7 +98,7 @@ export default async function CalendrierPage() {
                             Prochain match · {upcoming[0].competition}
                           </span>
                           <h3 className="mt-4 font-display text-[clamp(2rem,5.5vw,4.5rem)] leading-[0.95] tracking-tighter2 break-words">
-                            FC Poto <span className="italic text-ocre">contre</span>
+                            FC POTO <span className="italic text-ocre">contre</span>
                             <br />
                             {upcoming[0].opponent}
                           </h3>
@@ -129,7 +129,7 @@ export default async function CalendrierPage() {
                           {formatMonth(m.date)} · {m.home ? "Domicile" : "Extérieur"}
                         </span>
                         <span className="col-span-12 md:col-span-6 font-display text-[clamp(1.15rem,2.6vw,1.875rem)] tracking-tighter2 leading-[1.1]">
-                          FC Poto <span className="text-ink/30">·</span> {m.opponent}
+                          FC POTO <span className="text-ink/30">·</span> {m.opponent}
                         </span>
                         <span className="col-span-12 md:col-span-3 md:text-right font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-ink/55">
                           {m.competition}
@@ -186,7 +186,7 @@ export default async function CalendrierPage() {
                           {formatMonth(m.date)} · {m.home ? "Lardenne" : "Extérieur"}
                         </span>
                         <span className="col-span-12 md:col-span-5 font-display text-[clamp(1.15rem,2.6vw,1.875rem)] tracking-tighter2 leading-[1.1]">
-                          FC Poto <span className="text-ink/30">·</span> {m.opponent}
+                          FC POTO <span className="text-ink/30">·</span> {m.opponent}
                         </span>
                         <span className="col-span-7 md:col-span-3 font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-ink/55">
                           {m.competition}

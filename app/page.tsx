@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { championship, club, disciplines, featuredEvent, news, practices, previousEditions, stats, values } from "@/lib/data";
 import { getChampionshipData } from "@/lib/fsgt";
 import { NamesMarquee } from "@/components/Ticker";
-import { Countdown } from "@/components/Countdown";
 import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/SectionLabel";
 
@@ -20,14 +19,10 @@ export const revalidate = 3600;
 
 export default async function HomePage() {
   const { matches, standings } = await getChampionshipData();
-  const upcoming = matches
-    .filter((m) => !m.result)
-    .sort((a, b) => a.date.localeCompare(b.date));
   const recent = matches
     .filter((m) => m.result)
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 5);
-  const nextMatch = upcoming[0];
   const latestNews = news.slice(0, 3);
   // Marquee : disciplines + valeurs + identité du club
   const heroMarqueeWords = [
@@ -117,84 +112,48 @@ export default async function HomePage() {
         <NamesMarquee words={heroMarqueeWords} />
       </section>
 
-      {/* NEXT MATCH PANEL */}
+      {/* NEXT MATCH PANEL · invitation au calendrier */}
       <section id="match" className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-24">
         <SectionLabel
           index="01"
-          title="Le prochain match"
-          kicker="Stade de Lardenne · coup d'envoi 15h00"
+          title="Voir les prochains matchs"
+          kicker="Calendrier saison 25/26 · FSGT 31"
         />
 
         <div className="mt-10 grid grid-cols-12 gap-6">
           <Reveal className="col-span-12 lg:col-span-8">
-            <div className="relative overflow-hidden rounded-[28px] bg-navy text-cream p-8 lg:p-12 min-h-[440px]">
+            <div className="relative overflow-hidden rounded-[28px] bg-navy text-cream p-8 lg:p-12 min-h-[440px] h-full">
               <div className="absolute inset-0 pointer-events-none opacity-30">
                 <div className="absolute -top-32 -right-24 w-[420px] h-[420px] rounded-full bg-ocre/40 blur-3xl" />
                 <div className="absolute -bottom-40 -left-10 w-[420px] h-[420px] rounded-full bg-navy-electric/60 blur-3xl" />
               </div>
-              {nextMatch ? (
-                <div className="relative grid grid-cols-12 gap-6 h-full">
-                  <div className="col-span-12 flex items-center justify-between">
-                    <span className="font-mono text-[11px] tracking-[0.22em] uppercase">
-                      {nextMatch.competition}
-                    </span>
-                    <span className="font-mono text-[11px] tracking-[0.22em] uppercase opacity-80">
-                      {formatDate(nextMatch.date)}
-                    </span>
-                  </div>
-
-                  <div className="col-span-12 md:col-span-7 flex flex-col justify-center mt-6">
-                    <div className="flex items-center gap-3 md:gap-5 flex-wrap">
-                      <Badge label="FC Poto" home />
-                      <span className="font-display text-[clamp(2.5rem,6vw,4.5rem)] italic opacity-60 leading-none">
-                        vs
-                      </span>
-                      <Badge label={nextMatch.opponent} />
-                    </div>
-                    <p className="mt-8 text-[15px] text-cream/85 max-w-md">
-                      Prochain rendez-vous de la saison. Coup d'envoi à
-                      Stade de Lardenne · ouvert à tous, entrée libre.
-                    </p>
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      <Link href="/calendrier" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-cream text-ink text-[13px]">
-                        Tout le calendrier
-                      </Link>
-                      <Link href="/nous-rejoindre" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-cream/40 text-[13px]">
-                        Venir au stade
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="col-span-12 md:col-span-5 md:pl-8 md:border-l md:border-cream/20 flex flex-col justify-end">
-                    <span className="font-mono text-[10px] tracking-[0.22em] uppercase opacity-70 mb-3">
-                      Coup d'envoi dans
-                    </span>
-                    <Countdown target={nextMatch.date} />
-                    <div className="mt-6 font-mono text-[10px] tracking-[0.22em] uppercase opacity-80">
-                      Stade de Lardenne · Toulouse
-                    </div>
-                  </div>
+              <div className="relative h-full flex flex-col justify-center">
+                <span className="font-mono text-[11px] tracking-[0.22em] uppercase opacity-80">
+                  Calendrier de la saison
+                </span>
+                <h3 className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-tighter2">
+                  Tous les matchs<br />
+                  <span className="italic text-ocre">par ici.</span>
+                </h3>
+                <p className="mt-6 max-w-md text-cream/85 text-[15px] leading-relaxed">
+                  Foot à 11, foot à 7, dates, scores et classement. Mis à
+                  jour automatiquement depuis la FSGT 31.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link
+                    href="/calendrier#foot11"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-cream text-ink text-[14px] font-medium hover:bg-ocre hover:text-cream transition-colors"
+                  >
+                    Calendrier foot à 11 →
+                  </Link>
+                  <Link
+                    href="/calendrier#foot7"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-cream/40 text-cream text-[14px] font-medium hover:bg-cream hover:text-ink transition-colors"
+                  >
+                    Calendrier foot à 7 →
+                  </Link>
                 </div>
-              ) : (
-                <div className="relative h-full flex flex-col justify-center">
-                  <span className="font-mono text-[11px] tracking-[0.22em] uppercase opacity-80">
-                    Saison en pause
-                  </span>
-                  <h3 className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] leading-[0.95] tracking-tighter2">
-                    Pas de match programmé<br />
-                    <span className="italic text-ocre">pour le moment.</span>
-                  </h3>
-                  <p className="mt-6 max-w-md text-cream/85 text-[15px] leading-relaxed">
-                    Le prochain calendrier sera publié par la FSGT 31. Reviens
-                    bientôt · ou abonne-toi à la lettre du club.
-                  </p>
-                  <div className="mt-8">
-                    <Link href="/calendrier" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-cream text-ink text-[13px]">
-                      Voir le calendrier complet
-                    </Link>
-                  </div>
-                </div>
-              )}
+              </div>
             </div>
           </Reveal>
 
@@ -764,19 +723,6 @@ export default async function HomePage() {
   );
 }
 
-function Badge({ label, home }: { label: string; home?: boolean }) {
-  return (
-    <div className="flex flex-col items-center gap-2">
-      <div className={`w-16 h-20 ${home ? "bg-cream" : "bg-navy-deep"} rounded-md flex items-center justify-center font-display italic text-2xl ${home ? "text-ink" : "text-cream"} border ${home ? "border-ink/10" : "border-cream/20"}`}>
-        {label[0]}
-      </div>
-      <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-cream/90 max-w-[120px] text-center">
-        {label}
-      </span>
-    </div>
-  );
-}
-
 function FormChip({ status, large }: { status: "V" | "N" | "D"; large?: boolean }) {
   const cls =
     status === "V"
@@ -793,18 +739,6 @@ function FormChip({ status, large }: { status: "V" | "N" | "D"; large?: boolean 
       {status}
     </span>
   );
-}
-
-function formatDate(iso: string) {
-  const d = new Date(iso);
-  return d.toLocaleDateString("fr-FR", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
 }
 
 function formatDateShort(iso: string) {
