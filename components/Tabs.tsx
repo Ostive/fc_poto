@@ -3,6 +3,7 @@
 import {
   Children,
   isValidElement,
+  useEffect,
   useState,
   type ReactElement,
   type ReactNode
@@ -50,6 +51,23 @@ export function Tabs({
   });
 
   const [active, setActive] = useState<string>(defaultId ?? tabs[0]?.id ?? "");
+  const tabIdsKey = tabs.map((t) => t.id).join("|");
+
+  // Synchronise l'onglet actif avec le hash de l'URL (#foot7, #foot11, etc.)
+  // Permet d'arriver depuis un lien externe directement sur le bon onglet.
+  useEffect(() => {
+    const ids = tabIdsKey.split("|").filter(Boolean);
+    const syncFromHash = () => {
+      const hash = window.location.hash.slice(1);
+      if (hash && ids.includes(hash)) {
+        setActive(hash);
+      }
+    };
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+    return () => window.removeEventListener("hashchange", syncFromHash);
+  }, [tabIdsKey]);
+
   const activeTab = tabs.find((t) => t.id === active);
 
   const isPrimary = variant === "primary";

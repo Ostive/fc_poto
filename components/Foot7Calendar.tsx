@@ -44,7 +44,7 @@ function MatchRow({ m, played }: { m: Foot7Match; played: boolean }) {
         {dateStr.split(" ")[1]} · {homeBadge}
       </span>
       <span className="col-span-12 md:col-span-5 font-display text-[clamp(1.15rem,2.6vw,1.875rem)] tracking-tighter2 leading-[1.1]">
-        FC Poto <span className="text-ink/30">·</span> {m.opponent}
+        FC POTO <span className="text-ink/30">·</span> {m.opponent}
       </span>
       <span className="col-span-7 md:col-span-3 font-mono text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-ink/55">
         {m.poule} · J{m.journee || "?"}

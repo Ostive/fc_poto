@@ -32,7 +32,6 @@ export default async function ArticlePage({
   const article = news.find((n) => n.slug === slug);
   if (!article) notFound();
 
-  const related = news.filter((n) => n.slug !== slug).slice(0, 3);
   const formattedDate = new Date(article.date).toLocaleDateString("fr-FR", {
     weekday: "long",
     day: "numeric",
@@ -197,55 +196,7 @@ export default async function ArticlePage({
         </section>
       )}
 
-      {/* RELATED */}
-      <section className="mx-auto max-w-[1480px] px-6 lg:px-10 mt-24 mb-24">
-        <div className="flex items-end justify-between gap-6 border-b border-ink/20 pb-6">
-          <div className="flex items-baseline gap-6">
-            <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-ink/50">
-              ↳
-            </span>
-            <h2 className="font-display text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.02] tracking-tighter2">
-              À lire aussi
-            </h2>
-          </div>
-        </div>
-
-        <div className="mt-10 grid grid-cols-12 gap-6">
-          {related.map((n, i) => (
-            <Reveal
-              key={n.slug}
-              delay={i * 0.06}
-              className="col-span-12 md:col-span-6 lg:col-span-4"
-            >
-              <Link href={`/actualites/${n.slug}`} className="group block h-full">
-                <article className="h-full p-7 rounded-[24px] border border-ink/15 hover:border-ink hover:-translate-y-1 transition-all bg-cream flex flex-col">
-                  <div className="flex items-center justify-between font-mono text-[10px] tracking-[0.22em] uppercase text-ink/55">
-                    <span className="bg-paper px-2.5 py-1 rounded-full">{n.category}</span>
-                    <span>{formatDateShort(n.date)}</span>
-                  </div>
-                  <h3 className="mt-6 font-display text-[clamp(1.25rem,2.4vw,1.75rem)] leading-[1.05] tracking-tighter2 group-hover:text-navy transition-colors">
-                    {n.title}
-                  </h3>
-                  <p className="mt-4 text-[14px] leading-relaxed text-ink/75 flex-1 line-clamp-3">
-                    {n.excerpt}
-                  </p>
-                  <p className="mt-6 font-mono text-[10px] tracking-[0.22em] uppercase text-ink/55">
-                    {n.author} · {n.read}
-                  </p>
-                </article>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <div className="mb-24" />
     </>
   );
-}
-
-function formatDateShort(iso: string) {
-  return new Date(iso).toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "short",
-    year: "2-digit"
-  });
 }
