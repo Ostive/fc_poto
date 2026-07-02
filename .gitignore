@@ -5,3 +5,11 @@ out/
 *.log
 .DS_Store
 .vscode/
+
+# AI coding assistants
+.claude/
+.codex/
+.agents/
+.cursor/
+CLAUDE.md
+AGENTS.md
