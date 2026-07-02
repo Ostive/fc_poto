@@ -227,4 +227,4 @@ Si Tailwind ne picke pas de nouveaux fichiers : redémarrer le dev server. Si un
 
 ---
 
-_Dernière mise à jour : 21 mai 2026 — Claude_
+_Dernière mise à jour : 21 mai 2026_
